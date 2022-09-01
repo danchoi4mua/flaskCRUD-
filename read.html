@@ -1,0 +1,8 @@
+{% extends "chinh.html" %}
+{% block content %}
+
+{% for a in data2 %}
+    <p> TÊN SINH VIÊN : {{a.ten}} EMAIL : {{a.email}} Mã SỐ SINH VIÊN : {{a.masosv}} </p>
+
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,17 @@
+
+{% extends "chinh.html" %}
+{% block content %}
+
+
+
+
+<form method="post">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <div class="form-group">
+    <label for="xoa">Tên sinh viên </label>
+    <input  class="form-control" name="xoa" placeholder="Điền tên vào đây ">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+ </form>
+
+ {% endblock %}

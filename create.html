@@ -1,0 +1,26 @@
+
+{% extends "chinh.html" %}
+{% block content %}
+
+<form method="post">
+
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <div class="form-group">
+    <label for="ten">Tên sinh viên </label>
+    <input  class="form-control" name="ten" placeholder="Điền tên vào đây ">
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Điền email vào đây ">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+    <div class="form-group">
+    <label for="phone">Mã số</label>
+    <input type="number" class="form-control" placeholder="Điền mã số vào đây " name="maso" >
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+{% endblock %}
+

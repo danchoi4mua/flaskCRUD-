@@ -1,0 +1,21 @@
+
+{% extends "chinh.html" %}
+{% block content %}
+
+
+
+
+<form method="post">
+
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <div class="form-group">
+    <label for="email">Muốn đổi gì thì bỏ vào </label>
+    <input type="email"  class="form-control" name="caimuondoi" placeholder="Điền vào đây ">
+  </div>
+  <div class="form-group">
+    <label for="email">Đổi thành cái gì thì bỏ vào</label>
+    <input type="email" class="form-control" name="doithanh" aria-describedby="emailHelp" placeholder="Điền vào đây ">
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+ {% endblock %}
