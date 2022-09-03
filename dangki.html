@@ -1,0 +1,27 @@
+{% extends "chinh.html" %}
+{% block content %}
+
+
+
+
+    <h1>Tạo Tài Khoản</h1>
+    <form method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <div class="form-group">
+        <label for="tendangnhap">Tên đăng nhập </label>
+        <input  class="form-control" name="tendangnhap" placeholder="Điền tên đăng nhập vào đây ">
+      </div>
+      <div class="form-group">
+        <label for="matkhautaikhoan">Nhập mật khẩu </label>
+        <input type="password" class="form-control" name="matkhautaikhoan" placeholder="Điền mật khẩu vào đây ">
+      </div>
+        <div class="form-group">
+        <label for="quyentaikhoan">Quyền tài khoản </label>
+        <input  class="form-control" name="quyen" placeholder="Điền admin hoặc user ">
+      </div>
+      <button type="submit" class="btn btn-primary">Đăng Kí</button>
+     </form>
+
+
+
+{% endblock %}
