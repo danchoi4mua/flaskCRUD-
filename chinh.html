@@ -34,6 +34,8 @@
       <li class="nav-item active">
         <a class="nav-link" href="/">READ <span class="sr-only">(current)</span></a>
       </li>
+
+       {% if  current_user.is_authenticated and   quyentk == 1 %}
       <li class="nav-item">
         <a class="nav-link" href="/create">CREATE</a>
       </li>
@@ -41,15 +43,25 @@
         <li class="nav-item">
         <a class="nav-link" href="/update">UPDATE</a>
       </li>
+
       <li class="nav-item">
         <a class="nav-link" href="/delete">DELETE</a>
       </li>
+        {% endif %}
+        {% if not current_user.is_authenticated   %}
+      <li class="nav-item">
+        <a class="nav-link" href="/dangki">Đăng kí </a>
+      </li>
+        {% endif %}
+{% if  current_user.is_authenticated  %}
+      <li class="nav-item">
+        <a class="nav-link" href="/dangxuat">LOGOUT</a>
+      </li>
+{% endif %}
+
 
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+
   </div>
 </nav>
 
