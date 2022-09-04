@@ -75,11 +75,14 @@ def dangki():
 
 @app.route("/" , methods = ['GET','POST'])
 def dangnhap():
-
     return render_template("dangnhap.html")
 
 
-#
+def khongcoquyen(trang):
+    if quyentk == 1:
+        return render_template(trang, quyentk=quyentk)
+    else:
+        return redirect("/read")
 
 
 
@@ -112,9 +115,16 @@ def hello_world():
 @app.route("/create" , methods = ['GET','POST'])
 def create():
     if request.method == 'GET':
-        return render_template("create.html", quyentk = quyentk)
+
+        if quyentk == 1 :
+
+            return render_template("create.html", quyentk = quyentk)
+        else:
+
+            return redirect("/read")
 
     if request.method == 'POST':
+        print(quyentk,"o post")
         ten = request.form['ten']
         email = request.form['email']
         masosv = request.form['maso']
@@ -125,11 +135,15 @@ def create():
 
 
 
-
 @app.route("/delete", methods = ['GET','POST'])
 def delete():
     if request.method == 'GET':
-        return render_template("delete.html", quyentk = quyentk)
+        if quyentk == 1 :
+            return render_template("delete.html", quyentk = quyentk)
+        else:
+
+            return redirect("/read")
+
     if request.method == 'POST':
         ten = request.form['xoa']
         sinhvien.query.filter_by(ten=ten).delete()
@@ -143,7 +157,12 @@ def delete():
 @csrf.exempt
 def update():
     if request.method == 'GET':
-        return render_template("update.html", quyentk = quyentk)
+        if quyentk == 1:
+            return render_template("update.html", quyentk=quyentk)
+        else:
+
+            return redirect("/read")
+
     if request.method == 'POST':
         email = request.form["caimuondoi"]
         emailsauthaydoi = request.form["doithanh"]
