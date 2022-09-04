@@ -95,6 +95,7 @@ def xacminhdangnhap():
         if xacminh :
             login_user(user=xacminh)
             if current_user.is_authenticated and current_user.quyen == quyenUser.admin :
+                global quyentk
                 quyentk = 1
             else:
                 quyentk = 2
@@ -106,12 +107,12 @@ def xacminhdangnhap():
 @app.route("/read")
 def hello_world():
     data = sinhvien.query.all()
-    return render_template("read.html",data2 = data)
+    return render_template("read.html",data2 = data, quyentk = quyentk)
 
 @app.route("/create" , methods = ['GET','POST'])
 def create():
     if request.method == 'GET':
-        return render_template("create.html")
+        return render_template("create.html", quyentk = quyentk)
 
     if request.method == 'POST':
         ten = request.form['ten']
@@ -128,7 +129,7 @@ def create():
 @app.route("/delete", methods = ['GET','POST'])
 def delete():
     if request.method == 'GET':
-        return render_template("delete.html")
+        return render_template("delete.html", quyentk = quyentk)
     if request.method == 'POST':
         ten = request.form['xoa']
         sinhvien.query.filter_by(ten=ten).delete()
@@ -142,7 +143,7 @@ def delete():
 @csrf.exempt
 def update():
     if request.method == 'GET':
-        return render_template("update.html")
+        return render_template("update.html", quyentk = quyentk)
     if request.method == 'POST':
         email = request.form["caimuondoi"]
         emailsauthaydoi = request.form["doithanh"]
